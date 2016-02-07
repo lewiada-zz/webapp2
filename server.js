@@ -7,7 +7,6 @@ app.listen(process.env.PORT || 3000);
 app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
-//asdf
 
 // return a default index.htm
 app.get('/', function(req, res) {
