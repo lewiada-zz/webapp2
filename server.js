@@ -41,7 +41,7 @@ app.get('/person/:codename', function(req, res) {
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 app.post('/person', urlencodedParser, function(req, res) {
     
-    res.send('thank you!');
+    res.send('thank you buddy!');
     console.log(req.body.firstname);
     console.log(req.body.lastname);
 });
