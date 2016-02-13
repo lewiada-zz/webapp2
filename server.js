@@ -46,7 +46,7 @@ app.get('/person/:codename', function(req, res) {
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 app.post('/oauth', urlencodedParser, function(req, res) {
     
-    res.send('thank you buddy!');
+    res.send('thank you buddy!x2');
     console.log(req.body.firstname);
     console.log(req.body.lastname);
     
