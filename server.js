@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 
 // process the callback!
 app.get('/cb', function(req, res) {
-    res.send('emma');
+    res.send(req.query.code);
 });
 
 // return some html with css
