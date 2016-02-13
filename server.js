@@ -3,6 +3,7 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var request = require('request');
 var app = express();
 
 app.listen(process.env.PORT || 3000);
@@ -43,11 +44,15 @@ app.get('/person/:codename', function(req, res) {
 
 // handle a 'post' with from data
 var urlencodedParser = bodyParser.urlencoded({extended: false});
-app.post('/person', urlencodedParser, function(req, res) {
+app.post('/oauth', urlencodedParser, function(req, res) {
     
     res.send('thank you buddy!');
     console.log(req.body.firstname);
     console.log(req.body.lastname);
+    
+    request("http://www.iit.edu", function(error, response, body) {
+        console.log(body);
+    })
 });
 
 // handle a 'post' with json data
