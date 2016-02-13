@@ -34,7 +34,7 @@ app.get('/cb', function(req, res) {
         method: "POST",
         headers: {
             "Authorization" : auth
-        }
+        },
         form: {
             code: req.query.code,
             grant_type: "authorization_code",
