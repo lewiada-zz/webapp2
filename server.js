@@ -51,15 +51,10 @@ app.get('/person/:codename', function(req, res) {
 
 
 // handle a 'post' with from data
-    //?redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&response_type=code&client_id=407408718192.apps.googleusercontent.com&scope=openid&approval_prompt=force&access_type=offline
-
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 app.post('/oauth', urlencodedParser, function(req, res) {
     
-    //res.send('thank you, ' + req.body.firstname + ' ' + req.body.lastname + '.');;    
-    var propertiesObject = { field1:'test1', field2:'test2' };
-    
-    
+    //res.send('thank you, ' + req.body.firstname + ' ' + req.body.lastname + '.');;        
     request({
         uri: "https://accounts.google.com/o/oauth2/auth",
         qs: {
@@ -69,7 +64,7 @@ app.post('/oauth', urlencodedParser, function(req, res) {
             client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com'
         }
     }, function(error, response, body) {
-        //res.send(body);
+        res.send('thank you');
     })
 });
 
