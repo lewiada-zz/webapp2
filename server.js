@@ -21,7 +21,19 @@ app.get('/', function(req, res) {
 
 // process the callback!
 app.get('/cb', function(req, res) {
-    res.send(req.query.code);
+    //res.send(req.query.code);
+    
+    // swap code for id_token
+    request({
+        uri: "https://accounts.google.com/o/oauth2/token",
+        method: "POST",
+        form: {
+            code: req.query.code
+        }
+    }, function(error, response, body) {
+        res.send(response);
+    });
+    
 });
 
 // return some html with css
