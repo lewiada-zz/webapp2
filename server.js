@@ -28,10 +28,11 @@ app.get('/cb', function(req, res) {
         uri: "https://accounts.google.com/o/oauth2/token",
         method: "POST",
         form: {
-            code: req.query.code
+            code: req.query.code,
+            grant_type: "authorization_code"
         }
     }, function(error, response, body) {
-        res.send(response);
+        res.send(response.body);
     });
     
 });
