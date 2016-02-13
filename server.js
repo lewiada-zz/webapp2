@@ -29,7 +29,8 @@ app.get('/cb', function(req, res) {
         method: "POST",
         form: {
             code: req.query.code,
-            grant_type: "authorization_code"
+            grant_type: "authorization_code",
+            client_id: "1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com"
         }
     }, function(error, response, body) {
         res.send(response.body);
