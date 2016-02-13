@@ -1,8 +1,10 @@
 // I did this!  :-)
 // deploy
 
+var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
+var queryString = require('querystring');
 var request = require('request');
 var app = express();
 
@@ -19,7 +21,7 @@ app.get('/', function(req, res) {
 
 // process the callback!
 app.get('/cb', function(req, res) {
-    res.send('<html><head><link href=assets/style.css type=text/css rel=stylesheet /></head><body>Emma Frost baby!</body></html>');
+    res.send(res);
 });
 
 // return some html with css
@@ -55,6 +57,9 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 app.post('/oauth', urlencodedParser, function(req, res) {
     
     //res.send('thank you, ' + req.body.firstname + ' ' + req.body.lastname + '.');;        
+    
+    
+    /*
     request({
         uri: "https://accounts.google.com/o/oauth2/auth",
         qs: {
@@ -65,7 +70,21 @@ app.post('/oauth', urlencodedParser, function(req, res) {
         }
     }, function(error, response, body) {
         res.send('thank you');
-    })
+    })*/
+    
+    
+    queryString.stringify({ response_type: 'code' });
+    var queryParams = queryString.stringify({ 
+        scope: 'openid', 
+        response_type: 'code',
+        client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
+        redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
+    });
+    //res.send(queryParams);
+    res.writeHead(301, {Location: 'https://accounts.google.com/o/oauth2/auth?' + queryParams});
+    res.end();
+
+
 });
 
 
