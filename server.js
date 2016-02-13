@@ -16,6 +16,10 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+// process the callback!
+app.get('/cb', function(req, res) {
+    res.send('<html><head><link href=assets/style.css type=text/css rel=stylesheet /></head><body>Emma Frost baby!</body></html>');
+});
 
 // return some html with css
 app.get('/emma', function(req, res) {
