@@ -30,15 +30,16 @@ app.get('/cb', function(req, res) {
     var auth = "Basic " + new Buffer(client_id + ":" + password).toString("base64");
     
     request({
-        uri: "https://accounts.google.com/o/oauth2/token",
-        method: "POST",
+        uri: 'https://accounts.google.com/o/oauth2/token',
+        method: 'POST',
         headers: {
             "Authorization" : auth
         },
         form: {
             code: req.query.code,
-            grant_type: "authorization_code",
-            client_id: "1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com"
+            grant_type: 'authorization_code',
+            client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
+            redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
         }
         
         // 
