@@ -61,7 +61,7 @@ app.get('/cb', function(req, res) {
         uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
         method: 'GET',
         headers: {
-            "Authorization" : obj.access_token
+            "Authorization" : 'Bearer ' + obj.access_token
         }      
     }, function(error, response, body) {
             res.send('1. ' + body);
