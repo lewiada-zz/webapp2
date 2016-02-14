@@ -65,7 +65,8 @@ app.get('/cb', function(req, res) {
             }      
     }, function(error, response, body) {
             var obj = JSON.parse(body);
-            res.send('welcome, ' + obj.name);
+            res.render('person', { name: obj.name, picture: obj.picture });
+            //res.send('welcome, ' + obj.name);
         });
         
     });
