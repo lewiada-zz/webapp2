@@ -58,8 +58,8 @@ app.get('/cb', jsonParser, function(req, res) {
         }        
     }, function(error, response, body) {
         
-        // good! res.send(response.body);
-        res.send('4. ' + response.body.access_token);
+        res.send(response.body); // works
+        //res.send('4. ' + response.body.access_token); // doesn't work
         //res.render('tokens', { id_token: res.body.id_token, access_token: res.body.access_token });
     });
     
