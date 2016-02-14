@@ -22,7 +22,7 @@ app.post('/oauth', function(req, res) {
     
     queryString.stringify({ response_type: 'code' });
     var queryParams = queryString.stringify({ 
-        scope: 'openid profile', 
+        scope: 'openid profile email', 
         response_type: 'code',
         client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
         redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
@@ -53,10 +53,9 @@ app.get('/cb', function(req, res) {
             redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
         }        
     }, function(error, response, body) {        
-        var obj = JSON.parse(body);
-        //res.render('tokens', { id_token: obj.id_token, access_token: obj.access_token });
         
         // access the profile API
+        var obj = JSON.parse(body);
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
@@ -65,8 +64,8 @@ app.get('/cb', function(req, res) {
             }      
     }, function(error, response, body) {
             var obj = JSON.parse(body);
-            res.render('person', { name: obj.name, picture: obj.picture });
-            //res.send('welcome, ' + obj.name);
+            //res.render('person', { name: obj.name, picture: obj.picture });
+            res.send(body);
         });
         
     });
