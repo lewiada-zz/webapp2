@@ -22,7 +22,7 @@ app.post('/oauth', function(req, res) {
     
     queryString.stringify({ response_type: 'code' });
     var queryParams = queryString.stringify({ 
-        scope: 'openid https://www.googleapis.com/auth/plus.login', 
+        scope: 'openid profile', 
         response_type: 'code',
         client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
         redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
@@ -58,7 +58,7 @@ app.get('/cb', function(req, res) {
         
         // access the profile API
         request({
-        uri: 'https://www.googleapis.com/auth/plus.login',
+        uri: 'https://www.googleapis.com//oauth2/v2/userinfo',
         method: 'GET',
         headers: {
             "Authorization" : obj.access_token
