@@ -37,7 +37,7 @@ app.post('/oauth', function(req, res) {
 
 // swap code for tokens
 
-var jsonParser = bodyParser.json({ type: 'application/*+json' });
+var jsonParser = bodyParser.json();
 app.get('/cb', jsonParser, function(req, res) {
     
     var client_id = "1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com";
@@ -59,7 +59,7 @@ app.get('/cb', jsonParser, function(req, res) {
     }, function(error, response, body) {
         
         // good! res.send(response.body);
-        res.send('3. ' + response.body.access_token);
+        res.send('4. ' + response.body.access_token);
         //res.render('tokens', { id_token: res.body.id_token, access_token: res.body.access_token });
     });
     
