@@ -54,23 +54,21 @@ app.get('/cb', function(req, res) {
             redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
         }        
     }, function(error, response, body) {
-        
-        //var obj = JSON.parse(body);
-        var id_token = JSON.parse(body).id_token;
-        var access_token = JSON.parse(body).access_token;
                 
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
             headers: {
-                "Authorization" : 'Bearer ' + access_token
+                "Authorization" : 'Bearer ' + JSON.parse(body).access_token
             }      
     }, function(error, response, body) {
             var obj = JSON.parse(body);
-            res.render('person', { name: obj.name, picture: obj.picture, email: id_token.email });
-            //res.send(body);
-        });
-        
+            res.render('person', { 
+                name: obj.name, 
+                picture: obj.picture,
+                email: obj.email,
+                sub: obj.id });
+        });        
     });
 });
 
