@@ -36,7 +36,6 @@ app.post('/oauth', function(req, res) {
 
 
 // swap code for tokens
-
 var jsonParser = bodyParser.json();
 app.get('/cb', jsonParser, function(req, res) {
     
@@ -58,7 +57,9 @@ app.get('/cb', jsonParser, function(req, res) {
         }        
     }, function(error, response, body) {
         
-        res.send(response.body); // works
+        var obj = JSON.parse(body);
+        //res.send(response.body); // works
+        res.send('5' + obj.access_token);
         //res.send('4. ' + response.body.access_token); // doesn't work
         //res.render('tokens', { id_token: res.body.id_token, access_token: res.body.access_token });
     });
