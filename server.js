@@ -36,6 +36,7 @@ app.post('/oauth', function(req, res) {
 // OAuth Token Request
 app.get('/cb', function(req, res) {
     
+    // build the basic auth
     var client_id = "1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com";
     var password = "ioz503PlXXLr6tWb5Ij8AtLe";
     var auth = "Basic " + new Buffer(client_id + ":" + password).toString("base64");
@@ -52,21 +53,41 @@ app.get('/cb', function(req, res) {
             client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
             redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
         }        
-    }, function(error, response, body) {        
+    }, function(error, response, body) {
         
-        // access the profile API
-        var obj = JSON.parse(body);
+        //var obj = JSON.parse(body);
+        var id_token = JSON.parse(body).id_token;
+        var access_token = JSON.parse(body).access_token;
+                
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
             headers: {
-                "Authorization" : 'Bearer ' + obj.access_token
+                "Authorization" : 'Bearer ' + access_token
             }      
     }, function(error, response, body) {
             var obj = JSON.parse(body);
-            //res.render('person', { name: obj.name, picture: obj.picture });
-            res.send(body);
+            res.render('person', { name: obj.name, picture: obj.picture, email: id_token.email });
+            //res.send(body);
         });
         
     });
 });
+
+
+/*
+ * This is what comes back from the userInfo endpoint (deprecated)
+
+{ 
+    "id": "114691386565712585775", 
+    "email": "alewis17@hawk.iit.edu", 
+    "verified_email": true, 
+    "name": "Adam Lewis", 
+    "given_name": "Adam", 
+    "family_name": "Lewis", 
+    "picture": "https://lh5.googleusercontent.com/a07Gs6WgKG4/AAAAAAAAAAI/AAAAAAAAACI/eKZ0otMbCEI/photo.jpg",
+    "locale": "en", 
+    "hd": "hawk.iit.edu" 
+}
+
+*/
