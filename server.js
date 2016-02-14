@@ -58,13 +58,14 @@ app.get('/cb', function(req, res) {
         
         // access the profile API
         request({
-        uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
-        method: 'GET',
-        headers: {
-            "Authorization" : 'Bearer ' + obj.access_token
-        }      
+            uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
+            method: 'GET',
+            headers: {
+                "Authorization" : 'Bearer ' + obj.access_token
+            }      
     }, function(error, response, body) {
-            res.send('1. ' + body);
+            var obj = JSON.parse(body);
+            res.send('welcome, ' + obj.name);
         });
         
     });
