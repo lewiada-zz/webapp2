@@ -56,7 +56,7 @@ app.get('/cb', function(req, res) {
         }        
     }, function(error, response, body) {
         
-        res.send(body.id_token);
+        res.send(response.body);
         //res.render('tokens', { id_token: res.body.id_token, access_token: res.body.access_token });
     });
     
