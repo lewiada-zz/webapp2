@@ -59,7 +59,7 @@ app.get('/cb', function(req, res) {
         // access the profile API
         request({
         uri: 'https://www.googleapis.com/auth/plus.login',
-        method: 'POST',
+        method: 'GET',
         headers: {
             "Authorization" : obj.access_token
         }      
