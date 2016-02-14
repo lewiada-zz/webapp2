@@ -59,7 +59,7 @@ app.get('/cb', jsonParser, function(req, res) {
     }, function(error, response, body) {
         
         // good! res.send(response.body);
-        res.send('1. ' + body);
+        res.send('1. ' + body.access_token);
         //res.render('tokens', { id_token: res.body.id_token, access_token: res.body.access_token });
     });
     
