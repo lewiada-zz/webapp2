@@ -36,8 +36,7 @@ app.post('/oauth', function(req, res) {
 
 
 // swap code for tokens
-var jsonParser = bodyParser.json();
-app.get('/cb', jsonParser, function(req, res) {
+app.get('/cb', function(req, res) {
     
     var client_id = "1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com";
     var password = "ioz503PlXXLr6tWb5Ij8AtLe";
