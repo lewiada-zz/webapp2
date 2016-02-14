@@ -59,9 +59,9 @@ app.get('/cb', jsonParser, function(req, res) {
         
         var obj = JSON.parse(body);
         //res.send(response.body); // works
-        res.send('5' + obj.access_token);
+        //res.send('5' + obj.access_token);
         //res.send('4. ' + response.body.access_token); // doesn't work
-        //res.render('tokens', { id_token: res.body.id_token, access_token: res.body.access_token });
+        res.render('tokens', { id_token: obj.id_token, access_token: obj.access_token });
     });
     
 });
