@@ -1,30 +1,28 @@
 // I did this!  :-)
 // deploy
+// https://developers.google.com/identity/protocols/OpenIDConnect
 
-var http = require('http');
 var express = require('express');
-var bodyParser = require('body-parser');
 var queryString = require('querystring');
 var request = require('request');
 var app = express();
 
 app.listen(process.env.PORT || 3000);
 app.use('/assets', express.static(__dirname + '/public'));
-app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 
-// return a default index.htm
+// begin on the 'home page'
 app.get('/', function(req, res) {
     res.render('index');
 });
 
-// OAuth authorization request
+// OAuth Authorization Request
 app.post('/oauth', function(req, res) {
     
     queryString.stringify({ response_type: 'code' });
     var queryParams = queryString.stringify({ 
-        scope: 'openid', 
+        scope: 'openid https://www.googleapis.com/auth/plus.login', 
         response_type: 'code',
         client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
         redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
@@ -35,7 +33,7 @@ app.post('/oauth', function(req, res) {
 });
 
 
-// swap code for tokens
+// OAuth Token Request
 app.get('/cb', function(req, res) {
     
     var client_id = "1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com";
@@ -54,22 +52,20 @@ app.get('/cb', function(req, res) {
             client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
             redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
         }        
-    }, function(error, response, body) {
-        
+    }, function(error, response, body) {        
         var obj = JSON.parse(body);
-        //res.send(response.body); // works
-        //res.send('5' + obj.access_token);
-        //res.send('4. ' + response.body.access_token); // doesn't work
-        res.render('tokens', { id_token: obj.id_token, access_token: obj.access_token });
+        //res.render('tokens', { id_token: obj.id_token, access_token: obj.access_token });
+        
+        // access the profile API
+        request({
+        uri: 'https://www.googleapis.com/auth/plus.login',
+        method: 'POST',
+        headers: {
+            "Authorization" : obj.access_token
+        }      
+    }, function(error, response, body) {
+            res.send('1. ' + body);
+        });
+        
     });
 });
-
-
-
-
-
-
-
-
-
-
