@@ -10,6 +10,7 @@ var app = express();
 
 app.listen(process.env.PORT || 3000);
 app.use('/assets', express.static(__dirname + '/public'));
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 
@@ -54,7 +55,8 @@ app.get('/cb', function(req, res) {
             redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
         }        
     }, function(error, response, body) {
-        res.send(response.body.id_token);
+        
+        res.send(body.id_token);
         //res.render('tokens', { id_token: res.body.id_token, access_token: res.body.access_token });
     });
     
