@@ -58,7 +58,7 @@ app.get('/cb', function(req, res) {
         
         // access the profile API
         request({
-        uri: 'https://www.googleapis.com//oauth2/v2/userinfo',
+        uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
         method: 'GET',
         headers: {
             "Authorization" : obj.access_token
