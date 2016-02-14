@@ -63,7 +63,6 @@ app.get('/cb', jsonParser, function(req, res) {
         //res.send('4. ' + response.body.access_token); // doesn't work
         res.render('tokens', { id_token: obj.id_token, access_token: obj.access_token });
     });
-    
 });
 
 
