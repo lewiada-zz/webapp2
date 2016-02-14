@@ -54,7 +54,7 @@ app.get('/cb', function(req, res) {
             redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
         }        
     }, function(error, response, body) {
-        res.send(response.body);
+        res.send(response.body.id_token);
         //res.render('tokens', { id_token: res.body.id_token, access_token: res.body.access_token });
     });
     
