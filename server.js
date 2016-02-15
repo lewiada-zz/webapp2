@@ -31,8 +31,6 @@ app.get('/', function(req, res) {
 
 // OAuth Authorization Request
 app.post('/oauth', function(req, res) {
-    
-    //queryString.stringify({ response_type: 'code' });
     var queryParams = queryString.stringify({ 
         response_type: 'code',
         scope: 'openid profile email', 
@@ -46,7 +44,7 @@ app.post('/oauth', function(req, res) {
 });
 
 
-// OAuth Token Request
+// catch the authorization code
 app.get('/cb', function(req, res) {
     
     // build the basic auth
@@ -54,6 +52,7 @@ app.get('/cb', function(req, res) {
     var password = "ioz503PlXXLr6tWb5Ij8AtLe";
     var auth = "Basic " + new Buffer(client_id + ":" + password).toString("base64");
     
+    // swap the code for tokens
     request({
         uri: 'https://accounts.google.com/o/oauth2/token',
         method: 'POST',
@@ -65,16 +64,23 @@ app.get('/cb', function(req, res) {
             grant_type: 'authorization_code',
             client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
             redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
-        }        
+        }
+        
+       // process the response
     }, function(error, response, body) {
-                
+        
+        // use the acces token to access the user profile
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
             headers: {
                 "Authorization" : 'Bearer ' + JSON.parse(body).access_token
             }      
+            
+       // get the result of the userinfo request    
     }, function(error, response, body) {
+            
+            // do something with the JSON
             var obj = JSON.parse(body);
             res.render('person', { 
                 name: obj.name, 
