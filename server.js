@@ -1,6 +1,18 @@
-// I did this!  :-)
-// deploy
-// https://developers.google.com/identity/protocols/OpenIDConnect
+/*
+ * This is my first real node.js program.  It is a very simple program which implements a
+ * Web-based OIDC client that allows the user to login with a Google id_token and then uses
+ * the Google access_token to get the user's profile and finally (upon logon) displays the
+ * user's human name, email address, avatar, and unique subject identifier.
+ *
+ * To implement this simple program, I used a number of useful node modules, including:
+ * express, querystring, request, and ejs.  
+ *
+ * express --> makes things like routing, writing APIs, and working with HTTP easier
+ * querystring -->
+ * request -->
+ * ejs --> 
+ *
+ */
 
 var express = require('express');
 var queryString = require('querystring');
@@ -20,8 +32,9 @@ app.get('/', function(req, res) {
 // OAuth Authorization Request
 app.post('/oauth', function(req, res) {
     
-    queryString.stringify({ response_type: 'code' });
+    //queryString.stringify({ response_type: 'code' });
     var queryParams = queryString.stringify({ 
+        response_type: 'code',
         scope: 'openid profile email', 
         response_type: 'code',
         client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
