@@ -92,7 +92,7 @@ app.get('/cb', function(req, res) {
         
         
         access_token = JSON.parse(body).access_token;
-        res.send('access token = ' + access_token);
+        //res.send('access token = ' + access_token);
         
         
         // get some basic info about the user
