@@ -94,9 +94,8 @@ app.get('/cb', function(req, res) {
         access_token = JSON.parse(body).access_token;
         res.send('access token = ' + access_token);
         
-        // get some basic info about the user
         
-        /*
+        // get some basic info about the user
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
@@ -114,14 +113,14 @@ app.get('/cb', function(req, res) {
             picture = obj.picture;
             email = obj.email;
             id = obj.id;
-        });*/
+        });
             
-        /*
+        
         res.render('person', { 
             name: name, 
             picture: picture,
             email: email,
             sub: id 
-        });*/  
+        });
     });
 });
