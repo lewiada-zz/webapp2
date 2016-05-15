@@ -36,6 +36,9 @@ app.get('/', function(req, res) {
 
 app.get('/google', function(req, res) {
     
+    res.send('google!');
+    
+    /*
     var queryParams = queryString.stringify({ 
         response_type: 'code',
         scope: 'openid profile email https://www.google.com/m8/feeds', 
@@ -45,7 +48,7 @@ app.get('/google', function(req, res) {
     });
 
     res.writeHead(301, {Location: 'https://accounts.google.com/o/oauth2/auth?' + queryParams});
-    res.end();
+    res.end();*/
 });
 
 app.get('/contacts', function(req, res) {
