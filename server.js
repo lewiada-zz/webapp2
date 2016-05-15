@@ -83,9 +83,7 @@ app.get('/cb', function(req, res) {
                 
        // process the response
     }, function(error, response, body) {
-        
-        var access_token = JSON.parse(body).access_token;
-                
+                        
         // use the acces token to access the user profile
         /*
         request({
@@ -95,7 +93,7 @@ app.get('/cb', function(req, res) {
                 "Authorization" : 'Bearer ' + JSON.parse(body).access_token
             }*/
             
-        /*
+        
         request({
             uri: 'https://www.google.com/m8/feeds/contacts/lewiada@gmail.com/full',
             method: 'GET',
@@ -107,7 +105,7 @@ app.get('/cb', function(req, res) {
     }, function(error, response, body) {
             
             // do something with the JSON
-            res.send(body);
+            res.send('whatever, baby!!');
             
             
             //var obj = JSON.parse(body);
@@ -116,7 +114,7 @@ app.get('/cb', function(req, res) {
             //    picture: obj.picture,
             //    email: obj.email,
             //    sub: obj.id });
-        });*/       
+        });    
     });
     
     res.send(access_token); 
