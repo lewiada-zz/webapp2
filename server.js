@@ -103,7 +103,7 @@ app.get('/cb', function(req, res) {
             
             //res.send('okie dokie')
         
-        res.send('access token 2 = ' + access_token);
+        
             
             // do something with the JSON
             var obj = JSON.parse(body);
@@ -113,13 +113,15 @@ app.get('/cb', function(req, res) {
             email = obj.email;
             id = obj.id;
         });
-            
         
+        res.send('access token 3 = ' + access_token);
+        
+        /*
         res.render('person', { 
             name: name, 
             picture: picture,
             email: email,
             id: id 
-        });
+        });*/
     });
 });
