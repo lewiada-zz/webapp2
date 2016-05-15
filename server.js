@@ -96,8 +96,9 @@ app.get('/cb', function(req, res) {
     }, function(error, response, body) {
             
             // do something with the JSON
-            /*
             var obj = JSON.parse(body);
+            
+            /*
             res.render('person', { 
                 name: obj.name, 
                 picture: obj.picture,
