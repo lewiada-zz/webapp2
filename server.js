@@ -96,27 +96,25 @@ app.get('/cb', function(req, res) {
     }, function(error, response, body) {
             
             // do something with the JSON
-            var obj = JSON.parse(body);
-            
             /*
+            var obj = JSON.parse(body);
             res.render('person', { 
                 name: obj.name, 
                 picture: obj.picture,
                 email: obj.email,
                 sub: obj.id });*/
             
+            /* go get the contact for the mail address ... 
             request({
-                uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full',
+                uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full'
                 method: 'GET',
                 headers: {
                     "Authorization" : 'Bearer ' + JSON.parse(body).access_token
-                }
+                }*/
             
-            //res.send('hello, ' + obj.email);
+            res.send('hello, ' + obj.email);
         });       
-    }, function(error, response, body) {
-            res.send(body);
-        });
+    });
 });
 
 
