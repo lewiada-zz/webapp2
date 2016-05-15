@@ -35,10 +35,7 @@ app.get('/', function(req, res) {
 
 
 app.get('/google', function(req, res) {
-    
-    res.send('google!!!');
-    
-    /*
+        
     var queryParams = queryString.stringify({ 
         response_type: 'code',
         scope: 'openid profile email https://www.google.com/m8/feeds', 
@@ -48,7 +45,7 @@ app.get('/google', function(req, res) {
     });
 
     res.writeHead(301, {Location: 'https://accounts.google.com/o/oauth2/auth?' + queryParams});
-    res.end();*/ 
+    res.end(); 
 });
 
 app.get('/contacts', function(req, res) {
@@ -67,6 +64,8 @@ app.get('/contacts', function(req, res) {
 
 // catch the authorization code
 app.get('/cb', function(req, res) {
+    
+    /*
     
     // build the basic auth
     var client_id = "1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com";
@@ -120,5 +119,7 @@ app.get('/cb', function(req, res) {
             email: email,
             sub: id 
         });                
-    });
+    });*/
+    
+    res.send('callback');
 });
