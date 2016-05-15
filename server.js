@@ -108,22 +108,13 @@ app.get('/cb', function(req, res) {
             picture = obj.picture;
             email = obj.email;
             id = obj.id;
-        });
-        
-        res.render('person', { 
-            name: 'adam', 
-            picture: 'http://users.ox.ac.uk/~chri3110/images/Twitter-logo2.png',
-            email: 'lewiada@iit.edu',
-            id: 123456 
-        });
-        
-        //res.send('access token 3 = ' + access_token);  
-        /*
-        res.render('person', { 
-            name: name, 
-            picture: picture,
-            email: email,
-            id: id 
-        });*/
+            
+            res.render('person', {
+                name: name, 
+                picture: picture,
+                email: email,
+                id: id
+            });
+        });                
     });
 });
