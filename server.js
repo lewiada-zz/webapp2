@@ -32,13 +32,7 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-app.get('/linkedin', function(req, res) {
-    res.send('linkedin, duh');
-});
 
-app.get('/pinterest', function(req, res) {
-    res.send('pinterest, duh');
-});
 
 app.get('/google', function(req, res) {
     
@@ -53,11 +47,6 @@ app.get('/google', function(req, res) {
     res.writeHead(301, {Location: 'https://accounts.google.com/o/oauth2/auth?' + queryParams});
     res.end();
 });
-
-app.get('/twitter', function(req, res) {
-    res.send('twitter, duh');
-});
-
 
 app.get('/contacts', function(req, res) {
     
@@ -127,9 +116,6 @@ app.get('/cb', function(req, res) {
             picture: picture,
             email: email,
             sub: id 
-        });
-        
-        
-        //res.send('click <a href="/email">here</a> to get your email address.<br>click <a href="/contacts">here</a> to view your contacts.');
+        });                
     });
 });
