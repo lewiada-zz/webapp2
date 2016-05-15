@@ -114,12 +114,12 @@ app.get('/cb', function(req, res) {
             id = obj.id;
         });
             
-        /*
+        
         res.render('person', { 
             name: name, 
             picture: picture,
             email: email,
-            sub: id 
+            id: id 
         });*/
     });
 });
