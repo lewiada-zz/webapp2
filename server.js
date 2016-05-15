@@ -91,22 +91,23 @@ app.get('/cb', function(req, res) {
         
         res.send('got the response');
         
-        /*
-        access_token = JSON.parse(body).access_token;
+        
+        //access_token = JSON.parse(body).access_token;
 
         
         // get some basic info about the user
+        
+        /*
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
             headers: {
                 "Authorization" : 'Bearer ' + access_token
-            }*/                        
+            }                      
             
        // get the result of the userinfo request    
     }, function(error, response, body) {
             
-        /*
             // do something with the JSON
             var obj = JSON.parse(body);
             
@@ -114,13 +115,14 @@ app.get('/cb', function(req, res) {
             picture = obj.picture;
             email = obj.email;
             id = obj.id;
-        });
+        });*/
             
+        /*
         res.render('person', { 
             name: name, 
             picture: picture,
             email: email,
             sub: id 
-        });       */         
+        });*/  
     });
 });
