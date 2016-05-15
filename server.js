@@ -29,7 +29,7 @@ app.set('view engine', 'ejs');
 
 // begin on the 'home page'
 app.get('/', function(req, res) {
-    res.render('index');
+    res.render('index');    
 });
 
 
@@ -100,11 +100,7 @@ app.get('/cb', function(req, res) {
             
        // get the result of the userinfo request    
     }, function(error, response, body) {
-            
-            //res.send('okie dokie')
-        
-        
-            
+                        
             // do something with the JSON
             var obj = JSON.parse(body);
             
@@ -114,14 +110,20 @@ app.get('/cb', function(req, res) {
             id = obj.id;
         });
         
-        //res.send('access token 3 = ' + access_token);
+        res.render('person', { 
+            name: 'adam', 
+            picture: 'http://users.ox.ac.uk/~chri3110/images/Twitter-logo2.png',
+            email: 'lewiada@iit.edu',
+            id: 123456 
+        });
         
-        
+        //res.send('access token 3 = ' + access_token);  
+        /*
         res.render('person', { 
             name: name, 
             picture: picture,
             email: email,
             id: id 
-        });
+        });*/
     });
 });
