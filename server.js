@@ -61,7 +61,7 @@ app.get('/twitter', function(req, res) {
 
 app.get('/email', function(req, res) {
     
-    res.send('getting your email');
+    res.send('getting your email, AT= ' + access_token);
 
     /*
     reguest({
@@ -79,7 +79,7 @@ app.get('/email', function(req, res) {
 
 app.get('/contacts', function(req, res) {
     
-    res.send('getting your contacts');
+    res.send('getting your contacts, AT = ' + access_token);
     
     /*
     request({
