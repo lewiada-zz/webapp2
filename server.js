@@ -20,6 +20,7 @@ var request = require('request');
 var app = express();
 
 var access_token = undefined;
+var email = undefined;
 
 app.listen(process.env.PORT || 3000);
 app.use('/assets', express.static(__dirname + '/public'));
@@ -70,14 +71,15 @@ app.get('/email', function(req, res) {
         }                        
    }, function(error, response, body) {
         var obj = JSON.parse(body);
-        res.send('hello! ' + obj.email);
+        email = obj.email;
+        res.send('hello! ' + email);
     });    
 });
 
 app.get('/contacts', function(req, res) {
     
     request({
-        uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full',
+        uri: 'https://www.google.com/m8/feeds/contacts/' + email + '\/full',
         method: 'GET',
         headers: {
             "Authorization" : 'Bearer ' + access_token
