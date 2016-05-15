@@ -29,11 +29,19 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-// OAuth Authorization Request
-app.post('/oauth', function(req, res) {
+app.get('/linkedin', function(req, res) {
+    res.send('linkedin, duh');
+});
+
+app.get('/pinterest', function(req, res) {
+    res.send('pinterest, duh');
+});
+
+app.get('/google', function(req, res) {
+    
     var queryParams = queryString.stringify({ 
         response_type: 'code',
-        scope: 'openid profile email', 
+        scope: 'openid profile email https://www.google.com/m8/feeds', 
         response_type: 'code',
         client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
         redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
@@ -41,6 +49,10 @@ app.post('/oauth', function(req, res) {
 
     res.writeHead(301, {Location: 'https://accounts.google.com/o/oauth2/auth?' + queryParams});
     res.end();
+});
+
+app.get('/twitter', function(req, res) {
+    res.send('twitter, duh');
 });
 
 
@@ -52,8 +64,11 @@ app.get('/cb', function(req, res) {
     var password = "ioz503PlXXLr6tWb5Ij8AtLe";
     var auth = "Basic " + new Buffer(client_id + ":" + password).toString("base64");
     
+    console.log('got the callback!');
+    
     // swap the code for tokens
     request({
+                
         uri: 'https://accounts.google.com/o/oauth2/token',
         method: 'POST',
         headers: {
@@ -65,10 +80,10 @@ app.get('/cb', function(req, res) {
             client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
             redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
         }
-        
+                
        // process the response
     }, function(error, response, body) {
-        
+                
         // use the acces token to access the user profile
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
@@ -87,7 +102,7 @@ app.get('/cb', function(req, res) {
                 picture: obj.picture,
                 email: obj.email,
                 sub: obj.id });
-        });        
+        });       
     });
 });
 
