@@ -114,7 +114,7 @@ app.get('/cb', function(req, res) {
             id = obj.id;
         });
         
-        res.send('access token 3 = ' + access_token);
+        //res.send('access token 3 = ' + access_token);
         
         
         res.render('person', { 
