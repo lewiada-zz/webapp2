@@ -97,11 +97,13 @@ app.get('/cb', function(req, res) {
             
             // do something with the JSON
             var obj = JSON.parse(body);
+            
+            /*
             res.render('person', { 
                 name: obj.name, 
                 picture: obj.picture,
                 email: obj.email,
-                sub: obj.id });
+                sub: obj.id });*/
             
             /* replace the hardcoded email with obj.email
             request({
