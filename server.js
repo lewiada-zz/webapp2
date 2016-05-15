@@ -94,12 +94,13 @@ app.get('/cb', function(req, res) {
             }*/
             
         
+        /* UNCOMMENT THIS
         request({
             uri: 'https://www.google.com/m8/feeds/contacts/lewiada@gmail.com/full',
             method: 'GET',
             headers: {
                 "Authorization" : 'Bearer ' + JSON.parse(body).access_token
-            }    
+            }*/
             
        // get the result of the userinfo request    
     }, function(error, response, body) {
