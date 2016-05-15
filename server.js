@@ -58,6 +58,44 @@ app.get('/twitter', function(req, res) {
 });
 
 
+
+app.get('/email', function(req, res) {
+
+    reguest({
+        uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
+            method: 'GET',
+            headers: {
+                "Authorization" : 'Bearer ' + access_token
+            }        
+    }, function(error, response, body) {
+        
+        var obj = JSON.parse(body);
+        res.send('hello.  you\'re email is: ' + obj.email);
+    });
+});
+
+app.get('/contacts', function(req, res) {
+    
+    request({
+        uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full',
+        method: 'GET',
+        headers: {
+            "Authorization" : 'Bearer ' + JSON.parse(body).access_token
+        }
+    }, function(error, response, body) {
+        res.send(body);
+    });
+    
+});
+
+
+
+
+
+
+
+
+
 // catch the authorization code
 app.get('/cb', function(req, res) {
     
@@ -85,7 +123,7 @@ app.get('/cb', function(req, res) {
     }, function(error, response, body) {
         
         access_token = JSON.parse(body).access_token;
-        res.send('access token = ' + access_token);
+        res.send('click <a href="/email">here</a> to get your email address.<br>click <a href="/contacts">here</a> to view your contacts.');
                 
         
         
