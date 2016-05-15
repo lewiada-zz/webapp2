@@ -65,9 +65,7 @@ app.get('/cb', function(req, res) {
     var client_id = "1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com";
     var password = "ioz503PlXXLr6tWb5Ij8AtLe";
     var auth = "Basic " + new Buffer(client_id + ":" + password).toString("base64");
-    
-    console.log('got the callback!');
-    
+        
     // swap the code for tokens
     request({
                 
@@ -87,7 +85,15 @@ app.get('/cb', function(req, res) {
     }, function(error, response, body) {
         
         access_token = JSON.parse(body).access_token;
+        res.send('access token = ' + access_token);
                 
+        
+        
+        
+        
+        
+        /*
+        
         // use the acces token to access the user profile
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
@@ -102,26 +108,26 @@ app.get('/cb', function(req, res) {
             // do something with the JSON
             var obj = JSON.parse(body);
             
-            /*
-            res.render('person', { 
-                name: obj.name, 
-                picture: obj.picture,
-                email: obj.email,
-                sub: obj.id });*/
+            
+            //res.render('person', { 
+            //    name: obj.name, 
+            //    picture: obj.picture,
+            //    email: obj.email,
+            //    sub: obj.id });
             
             // FIX THE CODE THAT STAYS IN THE URL!!!!!!!!!!!!!!!!!!!!!!!!!!
             
-            /* go get the contact for the mail address ... 
-            request({
-                uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full'
-                method: 'GET',
-                headers: {
-                    "Authorization" : 'Bearer ' + JSON.parse(body).access_token
-                }*/
+            // go get the contact for the mail address ... 
+            //request({
+            //    uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full'
+            //    method: 'GET',
+            //    headers: {
+            //        "Authorization" : 'Bearer ' + JSON.parse(body).access_token
+            //    }
             
             
             res.send('hello! ' + obj.email);
-        });       
+        });*/       
     });
 });
 
