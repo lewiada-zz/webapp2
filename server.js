@@ -65,8 +65,6 @@ app.get('/contacts', function(req, res) {
 // catch the authorization code
 app.get('/cb', function(req, res) {
     
-    /*
-    
     // build the basic auth
     var client_id = "1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com";
     var password = "ioz503PlXXLr6tWb5Ij8AtLe";
@@ -119,7 +117,5 @@ app.get('/cb', function(req, res) {
             email: email,
             sub: id 
         });                
-    });*/
-    
-    res.send('callback');
+    });
 });
