@@ -111,7 +111,7 @@ app.get('/cb', function(req, res) {
                 picture: obj.picture,
                 email: obj.email,
                 sub: obj.id });*/
-            res.send('hello');
+            res.send(body);
         });       
     });
 });
