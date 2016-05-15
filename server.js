@@ -88,12 +88,7 @@ app.get('/cb', function(req, res) {
        // process the response
     }, function(error, response, body) {
         
-        
-        
-        
         access_token = JSON.parse(body).access_token;
-        
-        
         
         // get some basic info about the user
         request({
@@ -106,9 +101,9 @@ app.get('/cb', function(req, res) {
        // get the result of the userinfo request    
     }, function(error, response, body) {
             
-            res.send('okie dokie')
+            //res.send('okie dokie')
         
-        //res.send('access token = ' + access_token);
+        res.send('access token = ' + access_token);
             
         /*
             // do something with the JSON
