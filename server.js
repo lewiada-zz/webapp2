@@ -61,9 +61,6 @@ app.get('/twitter', function(req, res) {
 
 app.get('/email', function(req, res) {
     
-    res.send('getting your email, AT= ' + access_token);
-
-    /*
     reguest({
         uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
@@ -71,28 +68,61 @@ app.get('/email', function(req, res) {
                 "Authorization" : 'Bearer ' + access_token
             }        
     }, function(error, response, body) {
-        
-        var obj = JSON.parse(body);
         res.send('hello.  you\'re email is: ' + obj.email);
-    });*/
+    });
 });
 
 app.get('/contacts', function(req, res) {
     
-    res.send('getting your contacts, AT = ' + access_token);
-    
-    /*
     request({
         uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full',
         method: 'GET',
         headers: {
-            "Authorization" : 'Bearer ' + JSON.parse(body).access_token
+            "Authorization" : 'Bearer ' + access_token
         }
     }, function(error, response, body) {
         res.send(body);
-    });*/
-    
+    });    
 });
+
+
+
+/*
+        
+    // use the acces token to access the user profile
+    request({
+        uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
+        method: 'GET',
+        headers: {
+            "Authorization" : 'Bearer ' + access_token
+        }                        
+
+   // get the result of the userinfo request    
+   }, function(error, response, body) {
+
+        // do something with the JSON
+        var obj = JSON.parse(body);
+
+
+        //res.render('person', { 
+        //    name: obj.name, 
+        //    picture: obj.picture,
+        //    email: obj.email,
+        //    sub: obj.id });
+
+        // FIX THE CODE THAT STAYS IN THE URL!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        // go get the contact for the mail address ... 
+        //request({
+        //    uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full'
+        //    method: 'GET',
+        //    headers: {
+        //        "Authorization" : 'Bearer ' + JSON.parse(body).access_token
+        //    }
+
+
+        res.send('hello! ' + obj.email);
+    });*/   
 
 
 
