@@ -85,33 +85,33 @@ app.get('/cb', function(req, res) {
     }, function(error, response, body) {
                 
         // use the acces token to access the user profile
-        /*
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
             headers: {
                 "Authorization" : 'Bearer ' + JSON.parse(body).access_token
-            }*/
-            
-        request({
-            uri: 'https://www.google.com/m8/feeds/contacts/lewiada@gmail.com/full',
-            method: 'GET',
-            headers: {
-                "Authorization" : 'Bearer ' + JSON.parse(body).access_token
-            }    
+            }                        
             
        // get the result of the userinfo request    
     }, function(error, response, body) {
             
             // do something with the JSON
-            /*
             var obj = JSON.parse(body);
             res.render('person', { 
                 name: obj.name, 
                 picture: obj.picture,
                 email: obj.email,
-                sub: obj.id });*/
-            res.send(body);
+                sub: obj.id });
+            
+            /* replace the hardcoded email with obj.email
+            request({
+                uri: 'https://www.google.com/m8/feeds/contacts/lewiada@gmail.com/full',
+                method: 'GET',
+                headers: {
+                    "Authorization" : 'Bearer ' + JSON.parse(body).access_token
+                }*/
+            
+            res.send('hello, ' + obj.email);
         });       
     });
 });
