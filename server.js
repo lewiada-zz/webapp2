@@ -96,17 +96,20 @@ app.get('/cb', function(req, res) {
         
         
         // get some basic info about the user
+        
+        /*
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
             headers: {
                 "Authorization" : 'Bearer ' + access_token
-            }                      
+            }*/                      
             
        // get the result of the userinfo request    
     }, function(error, response, body) {
         
-        res.send('access token = ' + access_token);
+        //res.send('access token = ' + access_token);
+            
         /*
             // do something with the JSON
             var obj = JSON.parse(body);
