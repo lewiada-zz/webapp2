@@ -19,6 +19,8 @@ var queryString = require('querystring');
 var request = require('request');
 var app = express();
 
+var access_token = undefined;
+
 app.listen(process.env.PORT || 3000);
 app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
@@ -83,13 +85,15 @@ app.get('/cb', function(req, res) {
                 
        // process the response
     }, function(error, response, body) {
+        
+        access_token = JSON.parse(body).access_token;
                 
         // use the acces token to access the user profile
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
             headers: {
-                "Authorization" : 'Bearer ' + JSON.parse(body).access_token
+                "Authorization" : 'Bearer ' + access_token
             }                        
             
        // get the result of the userinfo request    
@@ -105,6 +109,8 @@ app.get('/cb', function(req, res) {
                 email: obj.email,
                 sub: obj.id });*/
             
+            // FIX THE CODE THAT STAYS IN THE URL!!!!!!!!!!!!!!!!!!!!!!!!!!
+            
             /* go get the contact for the mail address ... 
             request({
                 uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full'
@@ -113,7 +119,8 @@ app.get('/cb', function(req, res) {
                     "Authorization" : 'Bearer ' + JSON.parse(body).access_token
                 }*/
             
-            res.send('hello, ' + obj.email);
+            
+            res.send('hello! ' + obj.email);
         });       
     });
 });
