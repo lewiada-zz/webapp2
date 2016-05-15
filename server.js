@@ -117,8 +117,8 @@ app.get('/cb', function(req, res) {
             name = obj.name;
             picture = obj.picture;
             email = obj.email;
-            id = obj.id;
-        });*/
+            id = obj.id;*/
+        });
             
         /*
         res.render('person', { 
