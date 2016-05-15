@@ -29,7 +29,8 @@ app.set('view engine', 'ejs');
 
 // begin on the 'home page'
 app.get('/', function(req, res) {
-    res.render('index');
+    //res.render('index');
+    res.send('darn.');
 });
 
 
@@ -48,7 +49,7 @@ app.get('/google', function(req, res) {
     });
 
     res.writeHead(301, {Location: 'https://accounts.google.com/o/oauth2/auth?' + queryParams});
-    res.end();*/
+    res.end();*/ 
 });
 
 app.get('/contacts', function(req, res) {
