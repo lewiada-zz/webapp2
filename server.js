@@ -120,6 +120,6 @@ app.get('/cb', function(req, res) {
             picture: picture,
             email: email,
             id: id 
-        });*/
+        });
     });
 });
