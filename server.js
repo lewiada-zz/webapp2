@@ -29,8 +29,7 @@ app.set('view engine', 'ejs');
 
 // begin on the 'home page'
 app.get('/', function(req, res) {
-    //res.render('index');
-    res.send('darn.');
+    res.render('index');
 });
 
 
