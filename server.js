@@ -60,7 +60,10 @@ app.get('/twitter', function(req, res) {
 
 
 app.get('/email', function(req, res) {
+    
+    res.send('getting your email');
 
+    /*
     reguest({
         uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
@@ -71,11 +74,14 @@ app.get('/email', function(req, res) {
         
         var obj = JSON.parse(body);
         res.send('hello.  you\'re email is: ' + obj.email);
-    });
+    });*/
 });
 
 app.get('/contacts', function(req, res) {
     
+    res.send('getting your contacts');
+    
+    /*
     request({
         uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full',
         method: 'GET',
@@ -84,7 +90,7 @@ app.get('/contacts', function(req, res) {
         }
     }, function(error, response, body) {
         res.send(body);
-    });
+    });*/
     
 });
 
