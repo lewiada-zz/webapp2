@@ -68,7 +68,8 @@ app.get('/email', function(req, res) {
                 "Authorization" : 'Bearer ' + access_token
             }        
     }, function(error, response, body) {
-        res.send('hello.  you\'re email is: ' + obj.email);
+        var obj = JSON.parse(body);
+        res.send('hello! ' + obj.email);
     });
 });
 
