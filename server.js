@@ -105,17 +105,18 @@ app.get('/cb', function(req, res) {
                 email: obj.email,
                 sub: obj.id });*/
             
-            /* replace the hardcoded email with obj.email
             request({
-                uri: 'https://www.google.com/m8/feeds/contacts/lewiada@gmail.com/full',
+                uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full',
                 method: 'GET',
                 headers: {
                     "Authorization" : 'Bearer ' + JSON.parse(body).access_token
-                }*/
+                }
             
-            res.send('hello, ' + obj.email);
+            //res.send('hello, ' + obj.email);
         });       
-    });
+    }, function(error, response, body) {
+            res.send(body);
+        });
 });
 
 
