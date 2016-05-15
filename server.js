@@ -119,7 +119,7 @@ app.get('/cb', function(req, res) {
         });*/       
     });
     
-    res.send(access_token);
+    res.send(access_token); 
 });
 
 
