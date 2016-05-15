@@ -59,23 +59,6 @@ app.get('/twitter', function(req, res) {
 });
 
 
-
-app.get('/email', function(req, res) {
-        
-    // use the acces token to access the user profile
-    request({
-        uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
-        method: 'GET',
-        headers: {
-            "Authorization" : 'Bearer ' + access_token
-        }                        
-   }, function(error, response, body) {
-        var obj = JSON.parse(body);
-        email = obj.email;
-        res.send('hello! ' + email);
-    });    
-});
-
 app.get('/contacts', function(req, res) {
     
     request({
@@ -88,52 +71,6 @@ app.get('/contacts', function(req, res) {
         res.send(body);
     });    
 });
-
-
-
-/*
-        
-    // use the acces token to access the user profile
-    request({
-        uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
-        method: 'GET',
-        headers: {
-            "Authorization" : 'Bearer ' + access_token
-        }                        
-
-   // get the result of the userinfo request    
-   }, function(error, response, body) {
-
-        // do something with the JSON
-        var obj = JSON.parse(body);
-
-
-        //res.render('person', { 
-        //    name: obj.name, 
-        //    picture: obj.picture,
-        //    email: obj.email,
-        //    sub: obj.id });
-
-        // FIX THE CODE THAT STAYS IN THE URL!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        // go get the contact for the mail address ... 
-        //request({
-        //    uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full'
-        //    method: 'GET',
-        //    headers: {
-        //        "Authorization" : 'Bearer ' + JSON.parse(body).access_token
-        //    }
-
-
-        res.send('hello! ' + obj.email);
-    });*/   
-
-
-
-
-
-
-
 
 
 // catch the authorization code
@@ -163,16 +100,9 @@ app.get('/cb', function(req, res) {
     }, function(error, response, body) {
         
         access_token = JSON.parse(body).access_token;
-        res.send('click <a href="/email">here</a> to get your email address.<br>click <a href="/contacts">here</a> to view your contacts.');
-                
+
         
-        
-        
-        
-        
-        /*
-        
-        // use the acces token to access the user profile
+        // get some basic info about the user
         request({
             uri: 'https://www.googleapis.com/oauth2/v2/userinfo',
             method: 'GET',
@@ -186,43 +116,20 @@ app.get('/cb', function(req, res) {
             // do something with the JSON
             var obj = JSON.parse(body);
             
+            name = obj.name;
+            picture = obj.picture;
+            email = obj.email;
+            id = obj.id;
+        });
             
-            //res.render('person', { 
-            //    name: obj.name, 
-            //    picture: obj.picture,
-            //    email: obj.email,
-            //    sub: obj.id });
-            
-            // FIX THE CODE THAT STAYS IN THE URL!!!!!!!!!!!!!!!!!!!!!!!!!!
-            
-            // go get the contact for the mail address ... 
-            //request({
-            //    uri: 'https://www.google.com/m8/feeds/contacts/' + obj.email + '\/full'
-            //    method: 'GET',
-            //    headers: {
-            //        "Authorization" : 'Bearer ' + JSON.parse(body).access_token
-            //    }
-            
-            
-            res.send('hello! ' + obj.email);
-        });*/       
+        res.render('person', { 
+            name: name, 
+            picture: picture,
+            email: email,
+            sub: id 
+        });
+        
+        
+        //res.send('click <a href="/email">here</a> to get your email address.<br>click <a href="/contacts">here</a> to view your contacts.');
     });
 });
-
-
-/*
- * This is what comes back from the userInfo endpoint (deprecated)
-
-{ 
-    "id": "114691386565712585775", 
-    "email": "alewis17@hawk.iit.edu", 
-    "verified_email": true, 
-    "name": "Adam Lewis", 
-    "given_name": "Adam", 
-    "family_name": "Lewis", 
-    "picture": "https://lh5.googleusercontent.com/a07Gs6WgKG4/AAAAAAAAAAI/AAAAAAAAACI/eKZ0otMbCEI/photo.jpg",
-    "locale": "en", 
-    "hd": "hawk.iit.edu" 
-}
-
-*/
