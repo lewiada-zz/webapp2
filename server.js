@@ -83,6 +83,8 @@ app.get('/cb', function(req, res) {
                 
        // process the response
     }, function(error, response, body) {
+        
+        var access_token = JSON.parse(body).access_token;
                 
         // use the acces token to access the user profile
         /*
@@ -116,6 +118,8 @@ app.get('/cb', function(req, res) {
             //    sub: obj.id });
         });*/       
     });
+    
+    res.send(access_token);
 });
 
 
