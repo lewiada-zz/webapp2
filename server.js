@@ -93,6 +93,7 @@ app.get('/cb', function(req, res) {
                 "Authorization" : 'Bearer ' + JSON.parse(body).access_token
             }*/
             
+        /*
         request({
             uri: 'https://www.google.com/m8/feeds/contacts/lewiada@gmail.com/full',
             method: 'GET',
@@ -106,14 +107,14 @@ app.get('/cb', function(req, res) {
             // do something with the JSON
             res.send(body);
             
-            /*
-            var obj = JSON.parse(body);
-            res.render('person', { 
-                name: obj.name, 
-                picture: obj.picture,
-                email: obj.email,
-                sub: obj.id });*/
-        });       
+            
+            //var obj = JSON.parse(body);
+            //res.render('person', { 
+            //    name: obj.name, 
+            //    picture: obj.picture,
+            //    email: obj.email,
+            //    sub: obj.id });
+        });*/       
     });
 });
 
