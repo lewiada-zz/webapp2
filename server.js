@@ -72,7 +72,8 @@ app.get('/cb', function(req, res) {
         
     // swap the code for tokens
     request({
-                
+             
+        /*
         uri: 'https://accounts.google.com/o/oauth2/token',
         method: 'POST',
         headers: {
@@ -83,11 +84,14 @@ app.get('/cb', function(req, res) {
             grant_type: 'authorization_code',
             client_id: '1057843692494-0830gbb8q4r9metu3t30h2ms8nljago8.apps.googleusercontent.com',
             redirect_uri: 'http://fathomless-waters-41872.herokuapp.com/cb'
-        }
+        }*/
                 
        // process the response
     }, function(error, response, body) {
         
+        res.send('got the response');
+        
+        /*
         access_token = JSON.parse(body).access_token;
 
         
@@ -97,11 +101,12 @@ app.get('/cb', function(req, res) {
             method: 'GET',
             headers: {
                 "Authorization" : 'Bearer ' + access_token
-            }                        
+            }*/                        
             
        // get the result of the userinfo request    
     }, function(error, response, body) {
             
+        /*
             // do something with the JSON
             var obj = JSON.parse(body);
             
@@ -116,6 +121,6 @@ app.get('/cb', function(req, res) {
             picture: picture,
             email: email,
             sub: id 
-        });                
+        });       */         
     });
 });
