@@ -103,16 +103,15 @@ app.get('/cb', function(req, res) {
             
             //res.send('okie dokie')
         
-        res.send('access token = ' + access_token);
+        res.send('access token 2 = ' + access_token);
             
-        /*
             // do something with the JSON
             var obj = JSON.parse(body);
             
             name = obj.name;
             picture = obj.picture;
             email = obj.email;
-            id = obj.id;*/
+            id = obj.id;
         });
             
         /*
