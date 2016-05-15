@@ -116,12 +116,12 @@ app.get('/cb', function(req, res) {
         
         res.send('access token 3 = ' + access_token);
         
-        /*
+        
         res.render('person', { 
             name: name, 
             picture: picture,
             email: email,
             id: id 
-        });*/
+        });
     });
 });
