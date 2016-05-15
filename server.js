@@ -92,7 +92,7 @@ app.get('/cb', function(req, res) {
         
         
         access_token = JSON.parse(body).access_token;
-        //res.send('access token = ' + access_token);
+        
         
         
         // get some basic info about the user
@@ -105,7 +105,9 @@ app.get('/cb', function(req, res) {
             
        // get the result of the userinfo request    
     }, function(error, response, body) {
-            
+        
+        res.send('access token = ' + access_token);
+        /*
             // do something with the JSON
             var obj = JSON.parse(body);
             
@@ -113,14 +115,14 @@ app.get('/cb', function(req, res) {
             picture = obj.picture;
             email = obj.email;
             id = obj.id;
-        });
+        });*/
             
-        
+        /*
         res.render('person', { 
             name: name, 
             picture: picture,
             email: email,
             sub: id 
-        });
+        });*/
     });
 });
