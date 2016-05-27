@@ -48,19 +48,6 @@ app.get('/google', function(req, res) {
     res.end(); 
 });
 
-app.get('/contacts', function(req, res) {
-    
-    request({
-        uri: 'https://www.google.com/m8/feeds/contacts/' + email + '\/full',
-        method: 'GET',
-        headers: {
-            "Authorization" : 'Bearer ' + access_token
-        }
-    }, function(error, response, body) {
-        res.send(body);
-    });    
-});
-
 
 // catch the authorization code
 app.get('/cb', function(req, res) {
@@ -70,7 +57,7 @@ app.get('/cb', function(req, res) {
     var password = "ioz503PlXXLr6tWb5Ij8AtLe";
     var auth = "Basic " + new Buffer(client_id + ":" + password).toString("base64");
         
-    // swap the code for tokens
+    // swap the code for token
     request({
              
         uri: 'https://accounts.google.com/o/oauth2/token',
@@ -89,6 +76,8 @@ app.get('/cb', function(req, res) {
     }, function(error, response, body) {
         
         access_token = JSON.parse(body).access_token;
+        
+        
         
         // get some basic info about the user
         request({
@@ -117,4 +106,18 @@ app.get('/cb', function(req, res) {
             });
         });                
     });
+});
+
+
+app.get('/contacts', function(req, res) {
+    
+    request({
+        uri: 'https://www.google.com/m8/feeds/contacts/' + email + '\/full',
+        method: 'GET',
+        headers: {
+            "Authorization" : 'Bearer ' + access_token
+        }
+    }, function(error, response, body) {
+        res.send(body);
+    });    
 });
